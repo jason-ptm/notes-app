@@ -1,0 +1,209 @@
+/* generals styles */
+.SideVar {
+    width: min-content;
+    max-width: 200px;
+    height: 100vh;
+    position: sticky;
+    z-index: 2000;
+    top: 0;
+    background-color: #ddd;
+    transition: background .5s, color .5s, width 2s;
+}
+
+.content {
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 1s;
+}
+
+.close .option .content {
+    width: 0;
+
+}
+
+.close .option {
+    padding-left: 0;
+}
+
+.option {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+    padding-left: 15px;
+    transition: padding 1s;
+}
+
+.option:hover {
+    background-color: #e5e5e5;
+}
+
+.option .icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+/* darkMode */
+.dark.SideVar {
+    background-color: #30343b;
+    color: #ddd;
+}
+
+.dark .header {
+    border-color: #282b30;
+}
+
+.dark .arrow-icon {
+    background-color: #30343b;
+}
+
+.dark .option:hover {
+    background-color: #373b42;
+    color: #ddd;
+}
+
+.dark .darkmode-toggle {
+    background-color: #fff;
+}
+
+.dark .darkmode-toggle .circle {
+    background-color: #000;
+    transform: translateX(calc(100% - 3px));
+}
+
+.dark .arrow-icon .icon::after {
+    background-color: #fff;
+}
+
+.dark .arrow-icon .icon::before {
+    background-color: #fff;
+}
+
+/* menu icon */
+.arrow-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    background-color: #e0e0e0;
+    position: absolute;
+    top: 4px;
+    right: -18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #eee;
+}
+
+.dark .arrow-icon{
+    border-color: #45484e;
+}
+
+.arrow-icon .icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.arrow-icon .icon::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 2px;
+    background-color: #000;
+    transform: rotate(45deg) translate(3px, 4px);
+    transition: transform .5s;
+}
+
+.arrow-icon .icon::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 2px;
+    background-color: #000;
+    transform: rotate(-45deg) translate(2px, -4px);
+    transition: transform .5s;
+}
+
+.close .arrow-icon .icon::after {
+    transform: rotate(-45deg) translate(-2px, 4px);
+}
+
+.close .arrow-icon .icon::before {
+    transform: rotate(45deg) translate(-3px, -5px);
+}
+
+/* header */
+.header {
+    padding: 10px;
+    padding-top: 15px;
+    font-size: 20px;
+    letter-spacing: .5mm;
+    border-bottom: 1px solid #e3e3e3;
+    font-family: 'Aboreto', cursive;
+}
+
+.header .icon i {
+    font-size: 24px;
+}
+
+.header .option:hover {
+    background-color: transparent;
+}
+
+.options {
+    padding: 10px;
+}
+
+/* toggle darkmode button */
+.darkmode-toggle {
+    width: 28px;
+    height: 18px;
+    background-color: #000;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.darkmode-toggle .circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background-color: #fff;
+    position: relative;
+    transition: transform .5s;
+}
+
+/* footer */
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #d2d0d0;
+    border-radius: 0;
+    color: #888;
+}
+
+.footer .content {
+    width: 100%;
+}
+
+.footer p:nth-child(2) {
+    margin-top: 5px;
+}

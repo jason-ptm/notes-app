@@ -1,0 +1,61 @@
+/* cards style */
+
+/* cards colors  */
+.Card.blue {
+    background-color: #567edb9c;
+    border-color: #4732cfb5;
+}
+
+.Card.red {
+    background-color: #E74C3C9c;
+    border-color: #943126b5;
+}
+
+.Card.yellow {
+    background-color: #F4D03F9c;
+    border-color: #B7950Bb5;
+}
+
+.Card.green {
+    background-color: #2ECC719c;
+    border-color: #1D8348b5;
+}
+
+.Card.gray {
+    background-color: #7F8C8D9c;
+    border-color: #515A5Ab5;
+}
+
+.Card.orange {
+    background-color: #F39C129c;
+    border-color: #9C640Cb5;
+}
+
+
+.Card {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 250px;
+    max-height: 300px;
+    border: 2px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.Card .title {
+    font-weight: 500;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+
+.Card .card-text {
+    line-height: 23px;
+}
+
+@media screen and (max-width: 600px) {
+    .Card {
+        max-width: 500px;
+    }
+}
