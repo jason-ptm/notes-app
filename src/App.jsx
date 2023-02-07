@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 // components
 import SideVar from './components/side-var/SideVar';
@@ -52,30 +53,37 @@ function App() {
       <div id="comps-cont" className={`${options.darkMode ? " dark" : ""}`}>
         <div className="cards">
           {
-            cards.length > 0 &&
-            cards.map(card => {
-              return <Cards
-                key={card.id}
-                card={card}
-                addCardWindow={options.addCardWindow}
-                setCurrentCard={setCurrentCard} />
-            })
+            cards.length > 0 ?
+              cards.map(card => {
+                return <Cards
+                  key={card.id}
+                  card={card}
+                  addCardWindow={options.addCardWindow}
+                  setCurrentCard={setCurrentCard} />
+              })
+              :
+              <div className="warning">
+                No hay notas registradas!
+              </div>
           }
         </div>
-        {
-          options.addCardFlag &&
-          <AddCard
-            addCardWindow={() => {
-              setCards(prevCards => {
-                return prevCards.push(currentCard)
-              })
-            }}
-            editCard={editCard}
-            addCard={addCard}
-            deleteCard={deleteCard}
-            card={currentCard}
-            options={options} />
-        }
+        <AnimatePresence>
+          {
+            options.addCardFlag &&
+            <AddCard
+              addCardWindow={() => {
+                setCards(prevCards => {
+                  return prevCards.push(currentCard)
+                })
+              }}
+              editCard={editCard}
+              addCard={addCard}
+              deleteCard={deleteCard}
+              card={currentCard}
+              options={options} />
+          }
+        </AnimatePresence>
+
       </div>
     </div>
   );

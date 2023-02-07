@@ -1,17 +1,11 @@
 import './AddCard.css'
 import React from 'react'
 import uuid from 'react-uuid';
+import { motion } from "framer-motion"
 
 function AddCard(props) {
 
     const [currentCard, setCurrentCard] = React.useState(props.card)
-
-    React.useEffect(() => {
-        document.querySelectorAll('.inp').forEach(e => {
-            e.style.height = "auto"
-            e.style.height = `${e.scrollHeight}px`
-        })
-    }, [currentCard])
 
     const [colors, setColors] = React.useState(false)
 
@@ -21,6 +15,8 @@ function AddCard(props) {
     }))
 
     const handlerChange = (event) => {
+        event.target.style.height = "auto"
+        event.target.style.height = `${event.target.scrollHeight }px`
         const { value, name } = event.target
         setCurrentCard(prevCard => ({
             ...prevCard,
@@ -44,16 +40,29 @@ function AddCard(props) {
     }
 
     const deleteCard = () => {
-        if(window.confirm('Quieres borrar la nota?')){
+        if (window.confirm('Quieres borrar la nota?')) {
             props.deleteCard(currentCard.id)
             props.options.addCardWindow()
         }
     }
 
+    React.useEffect(() => {
+        document.querySelectorAll('.inp').forEach(inp => {
+            inp.style.height = "auto"
+            inp.style.height = `${inp.scrollHeight }px`
+        })
+    }, [])
+
     return (
-        <div
-            className={`AddCard open`}>
-            <form
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className='AddCard'>
+            <motion.form
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, transition: { duration: .5 } }}
+                exit={{ scale: 0, transition: { duration: .5 } }}
                 className="form"
                 onSubmit={e => e.preventDefault()}>
                 <div className="inps">
@@ -153,8 +162,8 @@ function AddCard(props) {
                 >
                     <i className="fa-solid fa-x"></i>
                 </div>
-            </form>
-        </div>
+            </motion.form>
+        </motion.div>
     )
 }
 

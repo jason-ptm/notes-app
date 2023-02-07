@@ -207,3 +207,9 @@
 .footer p:nth-child(2) {
     margin-top: 5px;
 }
+
+@media screen and (max-width: 600px) {
+    .SideVar{
+        position: absolute;
+    }
+}

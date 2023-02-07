@@ -1,8 +1,9 @@
 import './Cards.css'
+import { motion } from "framer-motion"
 
 function Cards(props) {
     return (
-        <div
+        <motion.div
             className={`Card ${props.card.themeColor}`}
             onClick={() => {
                 props.setCurrentCard(() => {
@@ -17,7 +18,7 @@ function Cards(props) {
             {props.card.note && <p className="card-text">
                 {props.card.note.length > 231 ? `${props.card.note.slice(0, 231)}...` : props.card.note}
             </p>}
-        </div>
+        </motion.div>
 
     )
 }
