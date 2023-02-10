@@ -42,6 +42,7 @@
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
+    transition: all .5s;
 }
 
 .Card .title {
@@ -54,8 +55,18 @@
     line-height: 23px;
 }
 
-@media screen and (max-width: 600px) {
+.title,
+.card-text {
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 750px) {
     .Card {
-        max-width: 500px;
+        max-width: 400px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .Card{
+         max-width: 250px;
     }
 }

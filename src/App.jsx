@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // components
 import SideVar from './components/side-var/SideVar';
@@ -41,8 +41,22 @@ function App() {
     setCards(prevCards => prevCards.filter(card => (card.id !== id)))
   }
 
+  const contentVariant = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: .4,
+        when: 'beforeChildren',
+        staggerChildren: .5,
+      }
+    }
+  }
+
   return (
-    <div className="App">
+    <div className={`App${options.darkMode ? " dark" : ""}`} >
       <SideVar
         clickDarkMode={() => setOptions(prevOptions => ({
           ...prevOptions,
@@ -50,23 +64,30 @@ function App() {
         }))}
         options={options}
         setCurrentCard={setCurrentCard} />
-      <div id="comps-cont" className={`${options.darkMode ? " dark" : ""}`}>
-        <div className="cards">
-          {
-            cards.length > 0 ?
-              cards.map(card => {
-                return <Cards
-                  key={card.id}
-                  card={card}
-                  addCardWindow={options.addCardWindow}
-                  setCurrentCard={setCurrentCard} />
-              })
-              :
-              <div className="warning">
-                No hay notas registradas!
-              </div>
-          }
-        </div>
+      <div id="comps-cont">
+        <motion.div
+          variants={contentVariant}
+          initial='hidden'
+          animate='visible'
+          className="cards">
+          <AnimatePresence>
+            {
+              cards.length > 0 ?
+                cards.map(card => {
+                  return <Cards
+                    key={card.id}
+                    card={card}
+                    addCardWindow={options.addCardWindow}
+                    setCurrentCard={setCurrentCard} />
+                })
+                :
+                <div
+                  className="warning">
+                  No hay notas registradas!
+                </div>
+            }
+          </AnimatePresence>
+        </motion.div>
         <AnimatePresence>
           {
             options.addCardFlag &&
@@ -85,7 +106,7 @@ function App() {
         </AnimatePresence>
 
       </div>
-    </div>
+    </div >
   );
 }
 

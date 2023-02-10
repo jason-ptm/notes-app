@@ -3,15 +3,16 @@
 }
 
 .AddCard {
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 100vh;
     background-color: #dddddd7e;
+    z-index: 4000;
     transition: all .5s;
 }
 
