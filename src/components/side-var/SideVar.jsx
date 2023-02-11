@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 function SideVar(props) {
 
-    const [sideVarToggle, setSideVarToggle] = React.useState(true)
+    const [sideVarToggle, setSideVarToggle] = React.useState(false)
 
     const navVariants = {
         hidden: {
